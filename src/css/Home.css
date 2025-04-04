@@ -122,3 +122,20 @@
     background-color: #0056b3;
   }
   
+  /* Filter Section */
+  /* Dropdown Styles */
+.filter-dropdown {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #F59E0B; /* Accent Color */
+  border-radius: 5px;
+  background-color: #1E293B; /* Dark Slate */
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-dropdown:hover {
+  background-color: #F59E0B; /* Highlight on hover */
+  color: #1E293B;
+}
