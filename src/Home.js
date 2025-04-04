@@ -60,12 +60,11 @@ export const Home = ()=>{
        console.log(usersList);
     }
     
-    const filterFemale = ()=>{
+    const filterFemale = (gender)=>{
        const onlyFemaleUsersList = usersList.filter((user)=>{
-        if(user.gender === "female")
+        if(user.gender === gender)
           return user;
        });
-       console.log("female");
        console.log(onlyFemaleUsersList);
        setUsersList(onlyFemaleUsersList);
     }
@@ -86,7 +85,7 @@ export const Home = ()=>{
             Load Users
           </button>
           {isLoading && <h1>Loading...</h1>}
-          <select className="filter-dropdown" onChange={}>
+          <select className="filter-dropdown" onChange={(e)=>filterFemale(e.target.value)}>
            <option value="all">All Users</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
