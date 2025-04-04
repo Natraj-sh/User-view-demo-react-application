@@ -1,0 +1,124 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Arial", sans-serif;
+  }
+  
+  .app-container {
+    text-align: center;
+    padding: 20px;
+    background: #f4f4f9;
+    min-height: 100vh;
+  }
+  
+  /* Buttons */
+  .buttons {
+    margin-bottom: 20px;
+  }
+  
+  .load-btn,
+  .filter-btn {
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .load-btn {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .load-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .filter-btn {
+    background-color: #ff4081;
+    color: white;
+  }
+  
+  .filter-btn:hover {
+    background-color: #d81b60;
+  }
+  
+  /* Profile List */
+  .profile-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  /* Profile Card */
+  .profile-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .profile-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .profile-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #007bff;
+    margin-bottom: 10px;
+  }
+  
+  .profile-info {
+    text-align: center;
+  }
+  
+  .profile-info h2 {
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .profile-info p {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0;
+  }
+  
+  /* Buttons inside Profile Card */
+  .view-more-btn,
+  .profile-btn {
+    padding: 8px 15px;
+    font-size: 14px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .view-more-btn {
+    background-color: #ff9800;
+    color: white;
+  }
+  
+  .view-more-btn:hover {
+    background-color: #e68900;
+  }
+  
+  .profile-btn {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .profile-btn:hover {
+    background-color: #0056b3;
+  }
+  
