@@ -21,6 +21,11 @@ export const Home = ()=>{
           }),
           enabled:false,
       });
+      var userListFilter = [];
+      React.useEffect(()=>{
+          console.log("howmuch");
+          
+      },[]);  
         
     const   addUsersToList = (newData)=>{
         const newUser = {
@@ -43,11 +48,12 @@ export const Home = ()=>{
         };
         
        // setUsersList(...usersList,newUser);//studpid this is wrong 
-       console.log(newData);
         setUsersList([...usersList,newUser]);//  setUsersList([...usersList, newUser]); correctly creates a new array with the existing users and adds the new one at the end.
-        console.log(usersList);
+       userListFilter = [...usersList];
+       console.log("the filter default list");
+       console.log(userListFilter);
     }
-    console.log(usersList);   
+   
     
     
     const updateViewMore = (id)=>{
@@ -57,17 +63,27 @@ export const Home = ()=>{
         return user;
        });
        setUsersList(newUserList);   
-       console.log(usersList);
     }
-    
     const filterFemale = (gender)=>{
+      console.log(gender);
+      // so e.target.value will get only the value as we already gave value="all" use that not ALL Users
+      if(gender === "all"){
+        console.log("chose user list filter");
+        console.log(userListFilter);
+        setUsersList(userListFilter);
+      }
+      else{
        const onlyFemaleUsersList = usersList.filter((user)=>{
         if(user.gender === gender)
           return user;
        });
        console.log(onlyFemaleUsersList);
        setUsersList(onlyFemaleUsersList);
+       console.log(userListFilter);
+      }
     }
+
+    
     
     let navigaToProfile = useNavigate();
     return (

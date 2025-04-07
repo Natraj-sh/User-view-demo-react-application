@@ -10,6 +10,7 @@ import About from './About';
 import Profile from './Profile';
 import { createContext } from 'react';
 import { QueryClient,QueryClientProvider  } from '@tanstack/react-query';
+import { NavBar } from './NavBar';
 
 
 export const AppContext = createContext();
@@ -24,12 +25,7 @@ function App() {
     <AppContext.Provider value={{userName,setUserName,usersList,setUsersList}}>  
       {/* //always put appcontext inside the QueryClientProvider */}
     <Router>
-     <nav className="navbar">
-  <Link to="/" className="nav-link">Home</Link>
-  <Link to="/about" className="nav-link">About</Link>
-  <Link to="/profile" className="nav-link">Profile</Link>
-   </nav>
-
+      <NavBar />
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='/about' element={<About />}></Route>
