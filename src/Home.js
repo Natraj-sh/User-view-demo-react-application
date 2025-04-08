@@ -11,6 +11,9 @@ import "./css/Home.css";
 export const Home = ()=>{
 
     const { usersList, setUsersList } = useContext(AppContext);
+    //const {userOriginalList,setUserOriginalList} = useState([]);//syntax wrong stupid use [] {used for declaring variables}
+    const [userOriginalList,setUserOriginalList] = useState([]);
+
     const { data,isLoading,isError,refetch } = useQuery({
         queryKey: ["cats"],
         queryFn: () =>
@@ -48,10 +51,14 @@ export const Home = ()=>{
         };
         
        // setUsersList(...usersList,newUser);//studpid this is wrong 
-        setUsersList([...usersList,newUser]);//  setUsersList([...usersList, newUser]); correctly creates a new array with the existing users and adds the new one at the end.
-       userListFilter = [...usersList];
+       // setUsersList([...usersList,newUser]);//this version calls only once does not update the state again 
+        //  setUsersList([...usersList, newUser]); correctly creates a new array with the existing users and adds the new one at the end.
+        setUsersList(prev=>[...prev,newUser]);//This version uses the latest value of the state, no matter how many updates are queued or batched.
+        
+        setUserOriginalList(prev=>[...prev,newUser]);//use this list to show orginal data of users after filtered to the usersList this will
+        //have all the old data back so setUsersList to this now we have all data back boom
        console.log("the filter default list");
-       console.log(userListFilter);
+       console.log(userOriginalList);
     }
    
     
@@ -69,8 +76,7 @@ export const Home = ()=>{
       // so e.target.value will get only the value as we already gave value="all" use that not ALL Users
       if(gender === "all"){
         console.log("chose user list filter");
-        console.log(userListFilter);
-        setUsersList(userListFilter);
+        setUsersList(userOriginalList);
       }
       else{
        const onlyFemaleUsersList = usersList.filter((user)=>{
@@ -79,8 +85,21 @@ export const Home = ()=>{
        });
        console.log(onlyFemaleUsersList);
        setUsersList(onlyFemaleUsersList);
-       console.log(userListFilter);
       }
+    }
+
+
+    const searchFilter = (text)=>{
+      console.log("searching");
+      console.log(userOriginalList);  
+      setUsersList(userOriginalList);
+      console.log(usersList);
+      const filteredList = usersList.filter((users)=>{
+        const name = users.name.firstName;
+        if(name.startsWith(text))
+          return true;
+      });
+      setUsersList(filteredList);
     }
 
     
@@ -89,6 +108,7 @@ export const Home = ()=>{
     return (
       <div className="app-container">
         <div className="buttons">
+        
           <button
             className="load-btn"
             onClick={() => {
@@ -100,12 +120,14 @@ export const Home = ()=>{
           >
             Load Users
           </button>
+
           {isLoading && <h1>Loading...</h1>}
           <select className="filter-dropdown" onChange={(e)=>filterFemale(e.target.value)}>
            <option value="all">All Users</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
          </select>
+         <input onChange={(e)=>searchFilter(e.target.value)} />
 
         </div>
     
